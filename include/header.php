@@ -19,8 +19,8 @@
           <?php
             if (isset($_SESSION['admin'])) {
               $user = $_SESSION['admin'];
-              echo '
 
+              echo '
                 <li class="nav-item">
                   <a class="nav-link text-white" href="profile.php">'.$user.'</a>
                 </li>
@@ -28,13 +28,29 @@
                   <a class="nav-link text-white" href="logout.php">Logout</a>
                 </li>
               ';
-            } else {
+
+            }else if (isset($_SESSION['doctor'])) {
+              $user = $_SESSION['doctor'];
+
               echo '
+              <li class="nav-item">
+                <a class="nav-link text-white" href="profile.php">'.$user.'</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="logout.php">Logout</a>
+              </li>
+            ';
+
+            }else {
+              echo '
+                <li class="nav-item">
+                  <a class="nav-link text-white" aria-current="page" href="index.php">Home</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" aria-current="page" href="admin_login.php">Admin</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Doctor</a>
+                  <a class="nav-link text-white" href="doctor_login.php">Doctor</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="#">Patient</a>
