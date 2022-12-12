@@ -28,7 +28,7 @@
                         <img src="images/paitient.jpg" style="width: 100%;" />
 
                         <h5 class="text-center">Create Account for Doctors Care</h5>
-                        <a href="#">
+                        <a href="patients_create.php">
                             <button class="btn btn-success mt-4" style="margin-left: 100px;">
                                 Create Account
                             </button>

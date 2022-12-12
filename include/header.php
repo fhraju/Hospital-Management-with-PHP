@@ -41,6 +41,18 @@
               </li>
             ';
 
+            }else if (isset($_SESSION['patients'])) {
+              $user = $_SESSION['patients'];
+
+              echo '
+              <li class="nav-item">
+                <a class="nav-link text-white" href="profile.php">'.$user.'</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="logout.php">Logout</a>
+              </li>
+            ';
+            
             }else {
               echo '
                 <li class="nav-item">
@@ -53,7 +65,7 @@
                   <a class="nav-link text-white" href="doctor_login.php">Doctor</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Patient</a>
+                  <a class="nav-link text-white" href="patients_login.php">Patient</a>
                 </li>
               ';
             }
