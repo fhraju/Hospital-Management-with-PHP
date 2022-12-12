@@ -8,24 +8,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin's Profile</title>
+    <title>Doctor's Profile</title>
 </head>
 <body>
     <?php
+
     include("../include/header.php");
     include("../include/connection.php");
+    
+    $doctor = $_SESSION['doctor'];
 
-    $admin = $_SESSION['admin'];
-
-    $query = "SELECT * FROM admin WHERE username='$admin'";
+    $query = "SELECT * FROM doctor WHERE username='$doctor'";
 
     $response = mysqli_query($connect, $query);
 
-    while ($row = mysqli_fetch_array($response)) {
+    $row = mysqli_fetch_array($response);
 
-        $username = $row['username'];
-        $profile = $row['profile'];
-    }
+    $username = $row['username'];
+    $profile = $row['profile'];
+    
 
     ?>
 
@@ -51,9 +52,9 @@
                                         $profile = $_FILES['profile_image']['name'];
 
                                         if (empty($profile)) {
-                                            echo "Upload an image.";
+                                            echo "<h5 class='text-center alert alert-danger'>Please Select an image.<h5>";
                                         }else {
-                                            $query = "UPDATE admin SET profile='$profile' WHERE username='$admin'";
+                                            $query = "UPDATE doctor SET profile='$profile' WHERE username='$doctor'";
                                             $result = mysqli_query($connect, $query);
 
                                             if ($result) {
@@ -72,6 +73,34 @@
                                     </div>
                                     <input type="submit" name="update" value="Update Image" class="btn btn-success my-1 mx-1">
                                 </form>
+
+                                <div class="my-3">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th colspan= "2" class="text-center">Details</th>
+                                    </tr>
+                                    <tr>
+                                        <td>First Name</td>
+                                        <td><?php echo $row['firstname']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Name</td>
+                                        <td><?php echo $row['lastname']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td><?php echo $row['email']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td><?php echo $row['gender']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Profile Image Name</td>
+                                        <td><?php echo $row['profile']; ?></td>
+                                    </tr>
+                                </table>
+                            </div>
                             </div>
                             <div class="col-md-6">
                                 <?php
@@ -82,11 +111,11 @@
                                         if (empty($username)) {
 
                                         }else {
-                                            $query = "UPDATE admin SET username='$username' WHERE username='$admin'";
+                                            $query = "UPDATE doctor SET username='$username' WHERE username='$doctor'";
                                             $response = mysqli_query($connect, $query);
 
                                             if ($response) {
-                                                $_SESSION['admin'] = $username;
+                                                $_SESSION['doctor'] = $username;
                                             }
                                         }
                                     }
@@ -110,7 +139,7 @@
 
                                         $error = array();
 
-                                        $q = "SELECT * FROM admin WHERE username='$admin'";
+                                        $q = "SELECT * FROM doctor WHERE username='$doctor'";
                                         $old = mysqli_query($connect, $q);
                                         $row = mysqli_fetch_array($old);
                                         $pass = $row['password'];
@@ -129,7 +158,7 @@
                                         }
 
                                         if (count($error) == 0) {
-                                            $query = "UPDATE admin SET password='$new_pass' WHERE username='$admin'";
+                                            $query = "UPDATE doctor SET password='$new_pass' WHERE username='$doctor'";
 
                                             mysqli_query($connect, $query);
                                         }

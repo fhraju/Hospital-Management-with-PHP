@@ -38,7 +38,7 @@
                         <img src="images/doctors.jpg" style="width: 100%;" />
 
                         <h5 class="text-center">If you are a doctor and want to help people then apply.</h5>
-                        <a href="doctors/apply.php">
+                        <a href="apply.php">
                             <button class="btn btn-success my-4" style="margin-left: 100px;">
                                 Apply Now
                             </button>

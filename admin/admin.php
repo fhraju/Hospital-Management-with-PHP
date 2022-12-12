@@ -140,7 +140,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                                        <input type="password" class="form-control" name="password" 
+                                        placeholder="Enter Password">
                                     </div>
                                     <div class="form-group">
                                         <label for="img">Add Admin Picture</label>

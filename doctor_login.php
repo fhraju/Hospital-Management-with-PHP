@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 include("include/connection.php");
 
@@ -24,6 +25,8 @@ if (isset($_POST['login'])) {
 
             echo "<script>alert('You are now Logged In')</script>";
             $_SESSION['doctor'] = $username;
+
+            header("Location: doctor/index.php");
 
         }else {
             echo "<script>alert('Invalid Account')</script>";
@@ -73,7 +76,7 @@ if (isset($error['login'])) {
                             <input type="password" class="form-control" name="password" placeholder="Enter Password">
                         </div>
                         <input type="submit" name="login" value="Login" class="btn btn-success mt-2">
-                        <p>Don't Have an account? <a href="doctors/apply.php">Apply Now!</a></p>
+                        <p>Don't Have an account? <a href="apply.php">Apply Now!</a></p>
                     </form>
                 </div>
             </div>
